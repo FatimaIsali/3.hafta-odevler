@@ -1,0 +1,27 @@
+
+using System;
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+      
+        ArrayList isimler = new ArrayList();
+
+        for (int i = 1; i <= 5; i++)
+        {
+            Console.WriteLine($"Lütfen {i}. isimi girin:");
+            string isim = Console.ReadLine();
+            isimler.Add(isim);
+        }
+        isimler.Sort();
+
+        
+        Console.WriteLine("\nAlfabetik olarak sıralanan isimler:");
+        foreach (string isim in isimler)
+        {
+            Console.WriteLine(isim);
+        }
+    }
+}
