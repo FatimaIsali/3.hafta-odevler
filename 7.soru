@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+     
+        List<int> sayilar = new List<int>();
+
+        int sayi;
+        int toplam = 0;
+
+     
+        Console.WriteLine("Pozitif tam sayılar girin (Çıkmak için 0'a basın):");
+        
+        while (true)
+        {
+     
+            Console.Write("Bir sayı girin: ");
+            if (int.TryParse(Console.ReadLine(), out sayi) && sayi >= 0)
+            {
+                if (sayi == 0)
+                {
+                    break; // "0" girildiğinde döngüden çık
+                }
+
+                // Pozitif sayıları toplamak
+                sayilar.Add(sayi);
+                toplam += sayi;
+            }
+            else
+            {
+                Console.WriteLine("Geçersiz giriş! Lütfen pozitif bir sayı girin.");
+            }
+        }
+
+        Console.WriteLine($"\nGirilen sayıların toplamı: {toplam}");
+
+        
+        Console.WriteLine("\nGirilen sayılar:");
+        for (int i = 0; i < sayilar.Count; i++)
+        {
+            Console.WriteLine(sayilar[i]);
+        }
+
+        Console.WriteLine("Program sonlandı.");
+    }
+}
