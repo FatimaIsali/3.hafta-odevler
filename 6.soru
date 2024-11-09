@@ -1,0 +1,72 @@
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string islem;
+        double sayi1, sayi2, sonuc;
+
+        do
+        {
+            Console.WriteLine("Bir işlem seçin (+, -, *, /) veya 'çıkış' yazın:");
+            islem = Console.ReadLine();
+            
+            if (islem.ToLower() == "çıkış")
+                break;
+
+          
+            Console.Write("Birinci sayıyı girin: ");
+            while (!double.TryParse(Console.ReadLine(), out sayi1))
+            {
+                Console.WriteLine("Geçersiz giriş! Lütfen bir sayı girin.");
+                Console.Write("Birinci sayıyı girin: ");
+            }
+
+            Console.Write("İkinci sayıyı girin: ");
+            while (!double.TryParse(Console.ReadLine(), out sayi2))
+            {
+                Console.WriteLine("Geçersiz giriş! Lütfen bir sayı girin.");
+                Console.Write("İkinci sayıyı girin: ");
+            }
+
+            switch (islem)
+            {
+                case "+":
+                    sonuc = sayi1 + sayi2;
+                    Console.WriteLine($"Sonuç: {sayi1} + {sayi2} = {sonuc}");
+                    break;
+
+                case "-":
+                    sonuc = sayi1 - sayi2;
+                    Console.WriteLine($"Sonuç: {sayi1} - {sayi2} = {sonuc}");
+                    break;
+
+                case "*":
+                    sonuc = sayi1 * sayi2;
+                    Console.WriteLine($"Sonuç: {sayi1} * {sayi2} = {sonuc}");
+                    break;
+
+                case "/":
+                    if (sayi2 != 0)
+                    {
+                        sonuc = sayi1 / sayi2;
+                        Console.WriteLine($"Sonuç: {sayi1} / {sayi2} = {sonuc}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Hata! Bir sayıyı sıfıra bölemezsiniz.");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Geçersiz işlem! Lütfen geçerli bir işlem seçin (+, -, *, /).");
+                    break;
+            }
+
+        } while (islem.ToLower() != "çıkış");
+
+        Console.WriteLine("Hesap makinesi kapatıldı. Çıkılıyor...");
+    }
+}
