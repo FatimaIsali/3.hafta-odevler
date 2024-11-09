@@ -1,0 +1,46 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+       
+        Random rand = new Random();
+        int dogruSayi = rand.Next(1, 101); // 1 ile 100 arasında rastgele bir sayı
+
+       
+        int tahmin = 0;
+        int denemeSayisi = 0;
+
+        Console.WriteLine("1 ile 100 arasında bir sayı tahmin edin!");
+
+        
+        while (tahmin != dogruSayi)
+        {
+            Console.Write("Tahmininizi girin: ");
+            
+           
+            if (int.TryParse(Console.ReadLine(), out tahmin))
+            {
+                denemeSayisi++; // Her tahmin denemesinde deneme sayısını artırıyoruz
+
+                if (tahmin < dogruSayi)
+                {
+                    Console.WriteLine("Tahmininiz çok düşük! Tekrar deneyin.");
+                }
+                else if (tahmin > dogruSayi)
+                {
+                    Console.WriteLine("Tahmininiz çok yüksek! Tekrar deneyin.");
+                }
+                else
+                {
+                    Console.WriteLine($"Tebrikler! Doğru tahmin ettiniz. {denemeSayisi} denemede bildiniz.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Lütfen geçerli bir sayı girin.");
+            }
+        }
+    }
+}
